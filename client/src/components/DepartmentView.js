@@ -64,6 +64,9 @@ class DepartmentView extends React.Component {
         <Button as={Link} size="tiny" color="teal" to={`/departments/${this.props.match.params.id}/edit`}>
           Edit
         </Button>
+        <Link to={`/departments/${this.props.match.params.id}/items`}>
+            <Button size="tiny" color="black">View Items</Button>
+        </Link>
         <Link to={`/departments/`}>
             <Button size="tiny" color="black">Back</Button>
         </Link>

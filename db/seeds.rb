@@ -8,7 +8,8 @@ Department.destroy_all
   20.times do
     item = department.items.create(
         name: Faker::Commerce.product_name,
-        price: Faker::Commerce.price.to_f
+        price: Faker::Commerce.price.to_f,
+        department_id: department.id,
     )
 end
  end

@@ -8,7 +8,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def show
-    render json: @department.item
+    render json: @item
   end
 
   def create
@@ -40,7 +40,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(params[:id])
+    @item = @department.items.find(params[:id])
   end
   
 end
