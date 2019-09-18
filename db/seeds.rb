@@ -1,14 +1,18 @@
 Department.destroy_all
 
 10.times do
-  Department.create(
+  department = Department.create(
     name: Faker::Commerce.department,
   )
 
-  # 10.times do 
-  #   name:
-  #   price:
-  #   department_id: d.id
-  # end
+  20.times do
+    item = department.items.create(
+        name: Faker::Commerce.product_name,
+        price: Faker::Commerce.price.to_f
+    )
+end
  end
- puts "10 Products Seeded"
+
+ puts "Products Seeded"
+
+

@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Link }  from 'react-router-dom'
-import { Segment, Header, Button, Icon, } from "semantic-ui-react";
+import { Segment, Header, Button, Container, Items, Card } from "semantic-ui-react";
 
 
 class DepartmentView extends React.Component {
@@ -36,7 +36,29 @@ class DepartmentView extends React.Component {
         </Segment>
         <br/>
         <br/>
-        //render department items
+       
+        {/* <div>
+
+        { this.props.items.map( item => (
+          
+          <Card key={item.id}>
+          <Card.Content>
+          <Card.Header>{ item.name }</Card.Header>
+          </Card.Content>
+          <Card.Content extra>
+          <Link to={`/items/${item.id}`}>
+          <Button color="black">
+            View
+          </Button>
+          </Link>
+          </Card.Content>
+          </Card>
+
+        ))};
+      
+        </div> */}
+
+        
 
         <br/>
         <Button as={Link} size="tiny" color="teal" to={`/departments/${this.props.match.params.id}/edit`}>

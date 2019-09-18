@@ -8,7 +8,7 @@ class ItemForm extends React.Component {
 
   componentDidMount() {
     if (this.props.match.params.id) {
-      axios.get(`/api/department/items/${this.props.match.params.id}`)
+      axios.get(`/api/departments/:department_id/items/${this.props.match.params.id}`)
         .then( res => {
           this.setState({ name: res.data.name, });
       })
@@ -24,18 +24,18 @@ class ItemForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.props.match.params.id) {
-      axios.put(`/api/department/items/${this.props.match.params.id}`, this.state)
+      axios.put(`/api/departments/:department_id/items/${this.props.match.params.id}`, this.state)
       .then(res => {
-        this.props.history.push(`/department/items/${this.props.match.params.id}`)
+        this.props.history.push(`/departments/:department_id/items/${this.props.match.params.id}`)
       })
       .catch(err => {
         console.log(err)
       })
     }
     else {
-      axios.post("/api/department/items", this.state)
+      axios.post("/api/departments/:department_id/items", this.state)
       .then( res => {
-        this.props.history.push("/department/items");
+        this.props.history.push("/departments/:department_id/items");
       })
       .catch( err => {
         console.log(err)
