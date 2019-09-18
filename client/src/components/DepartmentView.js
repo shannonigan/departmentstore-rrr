@@ -36,6 +36,9 @@ class DepartmentView extends React.Component {
         </Segment>
         <br/>
         <br/>
+        //render department items
+
+        <br/>
         <Button as={Link} size="tiny" color="teal" to={`/departments/${this.props.match.params.id}/edit`}>
           Edit
         </Button>
