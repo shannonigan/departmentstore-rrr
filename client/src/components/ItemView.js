@@ -9,25 +9,26 @@ class ItemView extends React.Component {
 
 
   componentDidMount() {
+    
     axios.get(`/api/departments/${this.props.match.params.department_id}/items/${this.props.match.params.id}`)
       .then( res => {
-        
         this.setState({ item: res.data, });
       })
       .catch(err =>{
-        
         console.log(err)})
   };
 
-  // deleteItem(id) {
-  //   axios.delete(`/api/departments/${this.props.match.params.id}/items/${this.props.match.params.id}`)
-  //     .then( res => {
-  //       this.props.history.push(`/departments/${this.props.match.params.id}/items`);
-  //     })
-  //     .catch( err => {
-  //       console.log(err);
-  //     })
-  // };
+  deleteItem(id) {
+    axios.delete(`/api/departments/${this.props.match.params.department_id}/items/${id}`)
+      .then( res => {
+        this.props.history.push(`/departments/${this.props.match.params.department_id}/items`);
+      })
+      .catch( err => {
+        console.log(err);
+      })
+  };
+
+ 
 
 
   render() {

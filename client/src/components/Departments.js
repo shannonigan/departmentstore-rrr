@@ -47,10 +47,16 @@ class Departments extends React.Component {
   render() {
     return(
       <div>
+       
         <Header as="h1">Departments</Header>
-        <br/>
+        
         <Link to="/departments/new">
-          <Button color="blue"> New department </Button>
+          <Button style={{ marginLeft:"800px", }} color="blue"> 
+          New department 
+          </Button>
+        <br/>
+        <br/>
+        <br/>
         </Link>
         <Card.Group>
         { this.renderDepartments() }

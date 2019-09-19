@@ -8,8 +8,9 @@ class Items extends React.Component {
   state = { items: [], };
 
   componentDidMount() {
-    //TODO make get request with axios
-    axios.get(`/api/departments/${this.props.match.params.id}/items`)
+    // const { department_id } = this.props.match.params.id
+debugger
+    axios.get(`/api/departments/${this.props.match.params.department_id}/items`)
     .then ( res => {
       this.setState({ items: res.data, });
     })
@@ -18,6 +19,8 @@ class Items extends React.Component {
     })
 
   };
+
+  
 
   renderItems = () => {
     const { items, } = this.state;
@@ -34,7 +37,7 @@ class Items extends React.Component {
           <Card.Meta>${item.price}</Card.Meta>
         </Card.Content>
         <Card.Content extra>
-          <Link to={`/departments/${this.props.match.params.id}/items/${item.id}`}>
+          <Link to={`/departments/${this.props.match.params.department_id}/items/${item.id}`}>
           <Button color="black">
             View
           </Button>
@@ -52,9 +55,11 @@ class Items extends React.Component {
         <Header as="h1">Items</Header>
         <br/>
         <Link to={`/departments/${this.props.match.params.id}/items/new`}>
-          <Button color="blue"> 
+          <Button style={{ marginLeft:"800px", }} color="blue"> 
           New item 
           </Button>
+        <br/>
+        <br/>
         </Link>
         <Card.Group>
         { this.renderItems() }

@@ -31,36 +31,13 @@ class DepartmentView extends React.Component {
 
     return (
        <div>
+        <br/>
         <Segment>
           <Header as="h1">{ name }</Header>
         </Segment>
         <br/>
         <br/>
-       
-        {/* <div>
 
-        { this.props.items.map( item => (
-          
-          <Card key={item.id}>
-          <Card.Content>
-          <Card.Header>{ item.name }</Card.Header>
-          </Card.Content>
-          <Card.Content extra>
-          <Link to={`/items/${item.id}`}>
-          <Button color="black">
-            View
-          </Button>
-          </Link>
-          </Card.Content>
-          </Card>
-
-        ))};
-      
-        </div> */}
-
-        
-
-        <br/>
         <Button as={Link} size="tiny" color="teal" to={`/departments/${this.props.match.params.id}/edit`}>
           Edit
         </Button>
