@@ -11,12 +11,15 @@ import ItemForm from "./components/ItemForm";
 import ItemView from "./components/ItemView";
 import { Container, } from "semantic-ui-react";
 import { Route, Switch, } from "react-router-dom";
+import styled, { keyframes } from "styled-components";
 
-const App = () => {
+
+class App extends React.Component {
+  render() {
   return (
     <>
       <Navbar />
-      <Container>
+      <AppContainer>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
@@ -30,10 +33,23 @@ const App = () => {
           <Route exact path="/departments/:department_id/items/:id/edit" component={ItemForm} />
           <Route component={NoMatch} />
         </Switch>
-      </Container>
+      </AppContainer>
+   
     </>
  
   );
 };
+
+
+};
+
+
+const AppContainer = styled.div`
+  background: linear-gradient(to bottom right, aliceblue, teal);
+  padding-top: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+`;
+
 
 export default App;

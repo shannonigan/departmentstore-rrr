@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { Link }  from 'react-router-dom'
 import { Segment, Header, Button, Container, Items, Card } from "semantic-ui-react";
+import { HeaderText, } from "../styles/shared";
+import styled, { keyframes } from "styled-components";
 
 
 class DepartmentView extends React.Component {
@@ -32,27 +34,73 @@ class DepartmentView extends React.Component {
     return (
        <div>
         <br/>
-        <Segment>
-          <Header as="h1">{ name }</Header>
+        <Link to={`/departments/${this.props.match.params.id}/items`}>
+          <EvButton style={{ marginLeft:"1200px", }} >View Items</EvButton>
+        </Link>
+        <Segment as={Transparent}>
+        <Header as={ HeaderText } fontSize="small">{ name }</Header>
         </Segment>
         <br/>
         <br/>
-
-        <Button as={Link} size="tiny" color="teal" to={`/departments/${this.props.match.params.id}/edit`}>
-          Edit
-        </Button>
-        <Link to={`/departments/${this.props.match.params.id}/items`}>
-            <Button size="tiny" color="black">View Items</Button>
+        <br/>
+        <Link to={`/departments/${this.props.match.params.id}/edit`}>
+          <EvButton>Edit</EvButton>
         </Link>
         <Link to={`/departments/`}>
-            <Button size="tiny" color="black">Back</Button>
+          <EvButton>Back</EvButton>
         </Link>
-        <Button onClick={() => this.deleteDepartment(this.props.match.params.id)} style={{ marginLeft:"920px", }} size="tiny" color="red">
+        <DeleteButton onClick={() => this.deleteDepartment(this.props.match.params.id)} >
           Delete
-        </Button>
+        </DeleteButton>
        </div>
     );
   };
 };
+
+const Transparent = styled.div`
+background: rgba(54, 128, 121, 0.87) !important;
+`;
+
+const EvButton = styled.button`
+  background: rgba(7, 73, 156, 0.6);
+  font-family: Arial, Helvetica, sans-serif;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+  margin-left: 10px;
+  border-radius: 25px;
+
+  &:hover {
+    background: rgba(30, 85, 90, 0.87);
+    transition: background 0.2s ease;
+  }
+
+`;
+
+
+const DeleteButton = styled.button`
+  background: rgba(14, 0, 88, 0.94);
+  font-family: Arial, Helvetica, sans-serif;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+  margin-left: 1200px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+
+  &:hover {
+    background: rgba(30, 85, 90, 0.87);
+    transition: background 0.2s ease;
+  }
+  
+`;
+
+
 
 export default DepartmentView;
