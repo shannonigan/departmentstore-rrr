@@ -49,16 +49,15 @@ class Departments extends React.Component {
   render() {
     return(
       <div>
-       
        <Header as={ HeaderText } fontSize="large">Departments</Header>
         
         <Link to="/departments/new">
           <StyledButton> New Department </StyledButton>
-        <br/>
-        <br/>
-        <br/>
         </Link>
-        <Card.Group>
+        <br/>
+        <br/>
+        <br/>
+        <Card.Group centered>
         { this.renderDepartments() }
         </Card.Group>
       </div>
@@ -67,7 +66,7 @@ class Departments extends React.Component {
 };
 
 const StyledButton = styled.button`
-  background: rgba(22, 100, 130, 0.87);
+  background: rgba(17, 125, 167, 0.87);
   border: none;
   color: white;
   padding: 12px 20px;

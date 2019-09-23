@@ -8,8 +8,11 @@ import styled, { keyframes } from "styled-components";
 class About extends React.Component {
   render() {
     return (
-      <Header as={ HeaderText } fontSize="large"> ~ Odds and Ends and Everything in Between ~ </Header>
-    
+      <>
+      <br/>
+      <br/>
+      <Header as={ HeaderText } fontSize="large"> ~ The Store of Oddities ~ </Header>
+      </>
     );
   };
 };

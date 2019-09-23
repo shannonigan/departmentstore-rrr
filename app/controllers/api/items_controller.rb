@@ -12,7 +12,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def create
-    item = @department.item.new(item_params)
+    item = @department.items.new(item_params)
     if item.save
       render json: item
     else
@@ -34,7 +34,7 @@ class Api::ItemsController < ApplicationController
   end
 
   private
-  def item_parmas
+  def item_params
     params.require(:item).permit(:name, :price)
   end
 
@@ -43,8 +43,10 @@ class Api::ItemsController < ApplicationController
   end
 
   def set_item
-    @item = @department.items.find(params[:id])
+    @item = Item.find(params[:id])
   end
+
+
   
 end
 

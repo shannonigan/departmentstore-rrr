@@ -34,12 +34,13 @@ class DepartmentView extends React.Component {
     return (
        <div>
         <br/>
+        <Header as={ HeaderText } fontSize="small">{ name } </Header>
+
         <Link to={`/departments/${this.props.match.params.id}/items`}>
-          <EvButton style={{ marginLeft:"1200px", }} >View Items</EvButton>
+          <EvButton style={{ marginLeft:"650px", }} >View Items</EvButton>
         </Link>
-        <Segment as={Transparent}>
-        <Header as={ HeaderText } fontSize="small">{ name }</Header>
-        </Segment>
+        
+       
         <br/>
         <br/>
         <br/>
@@ -58,11 +59,11 @@ class DepartmentView extends React.Component {
 };
 
 const Transparent = styled.div`
-background: rgba(54, 128, 121, 0.87) !important;
+background: rgba(19, 64, 97, 0.4) !important;
 `;
 
 const EvButton = styled.button`
-  background: rgba(7, 73, 156, 0.6);
+  background: rgba(20, 18, 51, 0.6);
   font-family: Arial, Helvetica, sans-serif;
   border: none;
   color: white;

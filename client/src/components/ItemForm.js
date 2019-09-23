@@ -1,54 +1,58 @@
 import React from "react";
 import axios from "axios";
 import { Header, Form, } from "semantic-ui-react";
+import { HeaderText, } from "../styles/shared";
+import styled from "styled-components";
 
 
 class ItemForm extends React.Component {
   state = { name: "", price: "" };
 
   componentDidMount() {
-    if (this.props.match.params.id) {
-      axios.get(`/api/departments/${this.props.match.params.department_id}/items/${this.props.match.params.id}`)
-        .then( res => {
-          this.setState({ name: res.data.name, });
-      })
-        .catch( err => {
-          console.log(err)
-        })}
-  };
+    const { match: { params: { id, department_id } } } = this.props
+    if (id && department_id)
+      axios.get(`/api/departments/${department_id}/items/${id}`)
+        .then(res => {
+          const { name, price, } = res.data
+          this.setState({ name, price, })
+        })
+        .catch(err => {
+          console.log(err.response)
+        })
+  }
 
-  handleChange = (e, { name, value, }) => {
-    this.setState({ [name]: value, });
-  };
+  handleChange = (e) => {
+    const { target: { name, value } } = e
+    this.setState({ [name]: value })
+  }
 
+ 
   handleSubmit = (e) => {
+    e.preventDefault()
+    const item = { ...this.state }
+    const { match: { params: { id, department_id } } } = this.props
     
-    e.preventDefault();
-    // if (this.props.match.params.id) {
-    //   axios.put(`/api/departments/${this.props.match.params.department_id}/items/${this.props.match.params.id}`, this.state)
-    //   .then(res => {
-    //     this.props.history.push(`/departments/${this.props.match.params.department_id}/items/${this.props.match.params.id}`)
-    //   })
-    //   .catch(err => {
-    //     console.log(err)
-    //   })
-    // }
-    // else {
+    if (id && department_id) {
       debugger
-      axios.post(`/api/departments/${this.props.match.params.department_id}/items`, this.state)
-      .then( res => {
-        this.props.history.push(`/departments/${this.props.match.params.department_id}/items`);
-      })
-      .catch( err => {
-        console.log(err)
-      })}
+      axios.put(`/api/departments/${department_id}/items/${id}`, item)
+        .then(res => {
+          this.props.history.push(`/departments/${department_id}/items/${id}`)
+        })
+    } else {
+      axios.post(`/api/departments/${department_id}/items`, item)
+        .then(res => {
+          this.props.history.push(`/departments/${department_id}/items`)
+        })
+    }
+  }
   
-
+  
   render() {
+    const { name, price, } = this.state
     return (
       <div>
-        <Header as="h1"> {this.props.match.params.id ? "Edit Item" : "New Item"} </Header>
-        <Header> New </Header>
+        <Header as={ HeaderText } fontSize="large"> {this.props.match.params.id ? "Edit Item" : "New Item"} </Header>
+        <br/>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths="equal">
             <Form.Input
@@ -56,7 +60,7 @@ class ItemForm extends React.Component {
             placeholder="Name"
             name="name"
             required
-            value={this.state.name}
+            value={name}
             onChange={this.handleChange}
             />
           </Form.Group>
@@ -66,15 +70,35 @@ class ItemForm extends React.Component {
             placeholder="Price"
             name="price"
             required
-            value={this.state.price}
+            value={price}
             onChange={this.handleChange}
             />
           </Form.Group>
-          <Form.Button> Submit </Form.Button>
+          <EvButton> Submit </EvButton>
         </Form>
       </div>
     );
   };
 };
+
+
+const EvButton = styled.button`
+  background: rgba(20, 18, 51, 0.6);
+  font-family: Arial, Helvetica, sans-serif;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+  margin-left: 1250px;
+  border-radius: 25px;
+
+  &:hover {
+    background: rgba(30, 85, 90, 0.87);
+    transition: background 0.2s ease;
+  }
+
+`;
 
 export default ItemForm;

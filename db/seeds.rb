@@ -5,7 +5,7 @@ Department.destroy_all
     name: Faker::Commerce.department,
   )
 
-  20.times do
+  10.times do
     item = department.items.create(
         name: Faker::Commerce.product_name,
         price: Faker::Commerce.price.to_f,

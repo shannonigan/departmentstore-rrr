@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Header, Form, } from "semantic-ui-react";
+import { HeaderText, } from "../styles/shared";
 
 
 class DepartmentForm extends React.Component {
@@ -45,7 +46,7 @@ class DepartmentForm extends React.Component {
   render() {
     return (
       <div>
-        <Header as="h1"> {this.props.match.params.id ? "Edit Department" : "New Department"} </Header>
+        <Header as={ HeaderText } fontSize="large"> {this.props.match.params.id ? "Edit Department" : "New Department"} </Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths="equal">
             <Form.Input

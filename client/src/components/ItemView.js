@@ -48,7 +48,7 @@ class ItemView extends React.Component {
        
 
         <br/>
-        <Link to={`/departments/:department_id/items/${this.props.match.params.id}/edit`}>
+        <Link to={`/departments/${this.props.match.params.department_id}/items/${this.props.match.params.id}/edit`}>
           <EvButton> Edit </EvButton>
         </Link>
         <EvButton onClick={this.props.history.goBack}> Back </EvButton>
@@ -62,11 +62,11 @@ class ItemView extends React.Component {
 
 
 const Transparent = styled.div`
-background: rgba(54, 128, 121, 0.87) !important;
+background: rgba(19, 64, 97, 0.4) !important;
 `;
 
 const EvButton = styled.button`
-  background: rgba(7, 73, 156, 0.6);
+  background: rgba(20, 18, 51, 0.6);
   font-family: Arial, Helvetica, sans-serif;
   border: none;
   color: white;

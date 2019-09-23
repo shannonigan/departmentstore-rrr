@@ -16,9 +16,11 @@ class Items extends React.Component {
 
     axios.get(`/api/departments/${this.props.match.params.department_id}/items`)
     .then ( res => {
+      debugger
       this.setState({ items: res.data, });
     })
     .catch ( err => {
+      debugger
       console.log("error caught");
     })
 
@@ -53,14 +55,15 @@ class Items extends React.Component {
   render() {
     return(
       <div>
-        <Header as="h1">Items</Header>
+        <Header as={ HeaderText } fontSize="large">Items</Header>
         <br/>
-        <Link to={`/departments/${this.props.match.params.id}/items/new`}>
-          <StyleButton> New item </StyleButton>
+        <Link to={`/departments/${this.props.match.params.department_id}/items/new`}>
+          <StyledButton> New item </StyledButton>
+        <br/>
         <br/>
         <br/>
         </Link>
-        <Card.Group>
+        <Card.Group centered>
         { this.renderItems() }
         </Card.Group>
       </div>
@@ -68,22 +71,23 @@ class Items extends React.Component {
   };
 };
 
-const StyleButton = styled.button`
-  background: rgba(22, 100, 130, 0.87);
+const StyledButton = styled.button`
+  background: rgba(17, 125, 167, 0.87);
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 12px 20px;
   cursor: pointer;
   outline: none;
-  font-size: 25px;
-  border-radius: 25px;
+  font-size: 15px;
   margin-left: 80rem;
+  border-radius: 25px;
 
   &:hover {
     background: rgba(30, 85, 90, 0.87);
     transition: background 0.2s ease;
   }
 `;
+
 
 const ViewButton = styled.button`
   background: rgba(22, 100, 130, 0.87);
