@@ -11,6 +11,15 @@ const fontSize = (size) => {
   };
 };
 
+
+
+export const HeaderText = styled.h1`
+  color: white !important;
+  text-align: center;
+  font-size: ${ props => fontSize(props.fontSize) } !important;
+`;
+
+
 // export const EvButton = styled.button`
 //   background: rgba(7, 73, 156, 0.6);
 //   font-family: Arial, Helvetica, sans-serif;
@@ -39,12 +48,3 @@ const fontSize = (size) => {
 //   margin-bottom: 20px;
 //   border-radius: 25px;
 // `;
-
-
-export const HeaderText = styled.h1`
-  color: white !important;
-  text-align: center;
-  font-size: ${ props => fontSize(props.fontSize) } !important;
-`;
-
-
